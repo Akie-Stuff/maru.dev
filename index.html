@@ -29,6 +29,53 @@
       position: relative;
     }
 
+    /* OVERLAY ENTER BUTTON (MEMAKSA INTERAKSI UNTUK AUTOPLAY AUDIO) */
+    #enter-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(5, 0, 2, 0.95);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(15px);
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .enter-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: #ffffff;
+      background: rgba(255, 26, 64, 0.1);
+      border: 1px solid #ff1a40;
+      padding: 16px 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      box-shadow: 0 0 25px rgba(255, 0, 50, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .enter-btn:hover {
+      background: rgba(255, 26, 64, 0.3);
+      box-shadow: 0 0 40px rgba(255, 0, 50, 0.8);
+      transform: scale(1.05);
+      color: #fff;
+    }
+
+    .enter-subtext {
+      font-family: 'Fira Code', monospace;
+      color: #ff8095;
+      font-size: 0.8rem;
+      margin-top: 14px;
+      letter-spacing: 1px;
+    }
+
     /* BACKGROUND WALLPAPER & ANIMATED PULSE */
     .bg-overlay {
       position: fixed;
@@ -245,9 +292,17 @@
 </head>
 <body>
 
+  <!-- ENTER OVERLAY FOR AUDIO AUTOPLAY PERMISSION -->
+  <div id="enter-overlay">
+    <button class="enter-btn" id="startBtn">[ ENTER SANCTUARY ]</button>
+    <div class="enter-subtext">// Click to initialize audio & experience</div>
+  </div>
+
+  <!-- BACKGROUND WALLPAPER & PARTICLE CANVAS -->
   <div class="bg-overlay"></div>
   <canvas id="particle-canvas"></canvas>
 
+  <!-- MAIN CARD -->
   <main class="profile-card">
     
     <header class="profile-header">
@@ -320,10 +375,13 @@
 
   </main>
 
-<audio id="bgmAudio" loop preload="auto">
-  <source src="https://cdn.jsdelivr.net/gh/Akie-Stuff/maru@main/music.mp3" type="audio/mpeg">
-</audio>
+  <!-- NATIVE AUDIO ELEMENT (CDN STREAMING READY) -->
+  <audio id="bgmAudio" loop preload="auto">
+    <source src="https://cdn.jsdelivr.net/gh/Akie-Stuff/maru@main/music.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
+  <!-- PARTICLES ANIMATION SCRIPT -->
   <script>
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
@@ -369,37 +427,23 @@
     animateParticles();
   </script>
 
-<script>
+  <!-- AUDIO INITIALIZATION & OVERLAY SCRIPT -->
+  <script>
     const audio = document.getElementById('bgmAudio');
-    let isPlaying = false;
+    const startBtn = document.getElementById('startBtn');
+    const overlay = document.getElementById('enter-overlay');
 
-    audio.volume = 0.8;
-
-    function playAudio() {
-      if (!isPlaying) {
-        audio.play().then(() => {
-          isPlaying = true;
-        }).catch(err => {
-          console.log("Autoplay ditahan browser, menunggu interaksi:", err);
-        });
-      }
-    }
-
-    // Coba putar saat halaman selesai dimuat
-    window.addEventListener('DOMContentLoaded', playAudio);
-
-    // Event pemicu interaksi resmi browser (Desktop & Mobile)
-    const validTriggers = ['click', 'touchstart', 'scroll', 'keydown', 'pointerdown'];
-
-    const handleUserInteraction = function() {
-      playAudio();
-      validTriggers.forEach(evt => {
-        window.removeEventListener(evt, handleUserInteraction);
+    startBtn.addEventListener('click', function() {
+      audio.volume = 0.8;
+      audio.play().then(() => {
+        // Hilangkan overlay secara halus setelah audio terkonfirmasi berputar
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.style.visibility = 'hidden';
+        }, 800);
+      }).catch(err => {
+        console.log("Audio play failed:", err);
       });
-    };
-
-    validTriggers.forEach(evt => {
-      window.addEventListener(evt, handleUserInteraction, { once: true, passive: true });
     });
   </script>
 </body>
