@@ -320,8 +320,8 @@
 
   </main>
 
- <audio id="bgmAudio" loop preload="auto">
-  <source src="https://raw.githubusercontent.com/Akie-Stuff/maru/main/music.mp3" type="audio/mpeg">
+<audio id="bgmAudio" loop preload="auto">
+  <source src="https://cdn.jsdelivr.net/gh/Akie-Stuff/maru@main/music.mp3" type="audio/mpeg">
 </audio>
 
   <script>
@@ -369,27 +369,38 @@
     animateParticles();
   </script>
 
-  <script>
+<script>
     const audio = document.getElementById('bgmAudio');
     let isPlaying = false;
 
-    function startPlayback() {
+    audio.volume = 0.8;
+
+    function playAudio() {
       if (!isPlaying) {
         audio.play().then(() => {
           isPlaying = true;
-        }).catch(() => {});
+        }).catch(err => {
+          console.log("Autoplay ditahan browser, menunggu interaksi:", err);
+        });
       }
     }
 
-    window.addEventListener('DOMContentLoaded', startPlayback);
+    // Coba putar saat halaman selesai dimuat
+    window.addEventListener('DOMContentLoaded', playAudio);
 
-    const triggers = ['click', 'mousemove', 'touchstart', 'scroll', 'keydown'];
-    const handleFirstInteraction = function() {
-      startPlayback();
-      triggers.forEach(evt => window.removeEventListener(evt, handleFirstInteraction));
+    // Event pemicu interaksi resmi browser (Desktop & Mobile)
+    const validTriggers = ['click', 'touchstart', 'scroll', 'keydown', 'pointerdown'];
+
+    const handleUserInteraction = function() {
+      playAudio();
+      validTriggers.forEach(evt => {
+        window.removeEventListener(evt, handleUserInteraction);
+      });
     };
 
-    triggers.forEach(evt => window.addEventListener(evt, handleFirstInteraction, { once: true }));
+    validTriggers.forEach(evt => {
+      window.addEventListener(evt, handleUserInteraction, { once: true, passive: true });
+    });
   </script>
 </body>
 </html>
