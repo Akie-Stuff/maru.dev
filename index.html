@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>maru.dev // Profile</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Rajdhani:wght@500;600;700&family=Fira+Code:wght@400;600&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #050002;
+      color: #e6e6e6;
+      font-family: 'Rajdhani', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* BACKGROUND WALLPAPER & ANIMATED PULSE */
+    .bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: 
+        linear-gradient(to bottom, rgba(5, 0, 2, 0.82), rgba(5, 0, 2, 0.94)),
+        url('916224.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: blur(3px);
+      transform: scale(1.05);
+      z-index: -2;
+      pointer-events: none;
+      animation: bgPulse 8s infinite alternate ease-in-out;
+    }
+
+    @keyframes bgPulse {
+      0% { filter: blur(3px) brightness(0.9); transform: scale(1.03); }
+      100% { filter: blur(2px) brightness(1.15); transform: scale(1.07); }
+    }
+
+    /* BACKGROUND PARTICLES CANVAS */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* PROFILE CARD CONTAINER WITH ENTRANCE ANIMATION */
+    .profile-card {
+      width: 100%;
+      max-width: 680px;
+      background: rgba(15, 2, 6, 0.85);
+      border: 1px solid rgba(255, 26, 64, 0.35);
+      border-radius: 16px;
+      padding: 45px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 40px rgba(180, 0, 30, 0.25), inset 0 0 15px rgba(255, 0, 50, 0.05);
+      animation: cardAppear 1s ease-out forwards;
+      position: relative;
+    }
+
+    @keyframes cardAppear {
+      from { opacity: 0; transform: translateY(30px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* HEADER & AVATAR WITH GLOW ANIMATION */
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 125px;
+      height: 125px;
+      margin-bottom: 18px;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #ff1a40;
+      box-shadow: 0 0 20px rgba(255, 0, 50, 0.6);
+      animation: avatarGlow 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes avatarGlow {
+      0% { box-shadow: 0 0 15px rgba(255, 0, 50, 0.5), 0 0 30px rgba(255, 0, 50, 0.2); }
+      100% { box-shadow: 0 0 25px rgba(255, 26, 64, 0.9), 0 0 45px rgba(255, 0, 50, 0.5); }
+    }
+
+    /* GLITCH TEXT EFFECT FOR BRAND */
+    .profile-name {
+      font-family: 'Cinzel', serif;
+      font-size: 2.4rem;
+      color: #ffffff;
+      text-transform: lowercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 12px rgba(255, 26, 64, 0.7);
+      position: relative;
+      display: inline-block;
+    }
+
+    .profile-name:hover {
+      animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0) }
+      20% { transform: translate(-2px, 2px) }
+      40% { transform: translate(-2px, -2px) }
+      60% { transform: translate(2px, 2px) }
+      80% { transform: translate(2px, -2px) }
+      100% { transform: translate(0) }
+    }
+
+    .profile-tag {
+      font-family: 'Fira Code', monospace;
+      color: #ff2a4b;
+      font-size: 0.9rem;
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+
+    /* SECTIONS */
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: #ff1a40;
+      border-bottom: 1px solid rgba(255, 26, 64, 0.3);
+      padding-bottom: 6px;
+      margin: 28px 0 14px;
+      letter-spacing: 1.5px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: #ff1a40;
+      box-shadow: 0 0 8px #ff1a40;
+    }
+
+    .bio-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #ccc;
+      margin-bottom: 12px;
+    }
+
+    .bio-quote {
+      font-family: 'Fira Code', monospace;
+      border-left: 2px solid #ff1a40;
+      padding-left: 14px;
+      margin: 16px 0;
+      color: #ff8095;
+      font-size: 0.92rem;
+      background: rgba(255, 26, 64, 0.05);
+      padding-top: 10px;
+      padding-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    /* TALK TOPICS & TAGS */
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-family: 'Fira Code', monospace;
+      background: rgba(255, 26, 64, 0.08);
+      border: 1px solid rgba(255, 26, 64, 0.3);
+      color: #ff8095;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: default;
+    }
+
+    .tag:hover {
+      background: rgba(255, 26, 64, 0.25);
+      border-color: #ff1a40;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(255, 0, 50, 0.5);
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    /* POEM SECTION STYLING */
+    .poem-box {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #e0b0b8;
+      background: rgba(20, 2, 8, 0.6);
+      border: 1px solid rgba(255, 26, 64, 0.2);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-top: 12px;
+      position: relative;
+    }
+
+    .poem-box p {
+      margin-bottom: 14px;
+    }
+
+    .poem-box p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-overlay"></div>
+  <canvas id="particle-canvas"></canvas>
+
+  <main class="profile-card">
+    
+    <header class="profile-header">
+      <div class="avatar-wrapper">
+        <img src="916224.jpg" alt="Avatar" class="avatar-img">
+      </div>
+      <h1 class="profile-name">maru | まる</h1>
+      <div class="profile-tag">Software Engineer • Polymath • Composer & Writer</div>
+    </header>
+
+    <section>
+      <h2 class="section-title">// About Me</h2>
+      <p class="bio-text">
+        I operate across the convergence of analytical logic, human cognition, and auditory creation. While I engineer software systems and structure complex software architectures, my mind continuously explores classical philosophy, psychological patterns, and the neural mechanics of perception.
+      </p>
+      <p class="bio-text">
+        Beyond code and theory, I manifest thoughts into words and sound—writing essays, crafting lyrics, and composing instrumental pieces that capture emotional resonances traditional language often fails to articulate.
+      </p>
+      <div class="bio-quote">
+        "I am not an otaku or bound by subculture obsession. I am simply feeding the vision of my childhood dream self—constructing a dark crimson sanctuary where intellectual rigor, musical composition, and aesthetic depth exist as one."
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">// Spectrum of Discourse</h2>
+      <p class="bio-text" style="font-size: 0.98rem;">
+        Always open for intellectual exchange, creative synergy, or deep analytical discussions across these domains:
+      </p>
+      <div class="tag-container">
+        <span class="tag">Classical & Post-Aristotelian Logic Systems</span>
+        <span class="tag">Cognitive Neuroscience & Psychological Mechanics</span>
+        <span class="tag">Instrumental Composition & Songwriting</span>
+        <span class="tag">Epistemology & Epistemic Sincerity</span>
+        <span class="tag">Backend Software Engineering & GraphQL</span>
+        <span class="tag">Relational Schemas & Database Systems</span>
+        <span class="tag">Data Analytics & K-Means Clustering</span>
+        <span class="tag">Custom Motorcycle & Mechanical Builds</span>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">// Rekayasa Musim Semi</h2>
+      <div class="poem-box">
+        <p>
+          Di bawah selimut salju yang membeku dalam retorika,<br>
+          aku pernah terbangun di antara pecahan kompas yang padam.<br>
+          Di sana, musim semi bukanlah siklus alam yang pasti datang,<br>
+          melainkan sebuah hipotesis yang harus kususun kembali dari nol.
+        </p>
+        <p>
+          Aku terlahir ulang di belantara kilatan merah kirmizi,<br>
+          menanggalkan kulit dingin tempat ingatan lama membatu.<br>
+          Setiap napas baru adalah algoritma yang mencari kompresi cita,<br>
+          menelusuri labirin kesadaran demi menembus kabut tak bertepi.
+        </p>
+        <p>
+          Di balik kerumitan struktur dan dentang nada yang kurangkai,<br>
+          ada satu jejak abstrak yang tak pernah berhenti kucari:<br>
+          tujuan mutlak dari sosok puan yang membayang di ambang batas mimpi.<br>
+          Apakah ia adalah kebenaran yang tersembunyi di balik susunan logika,<br>
+          atau simfoni terakhir yang belum sempat kutuliskan?
+        </p>
+        <p>
+          Maka biarlah musim semi ini tetap merekah dalam merah yang pekat—<br>
+          sebab dalam tiap kelahiran kembali yang berulang,<br>
+          langkahku hanyalah penjelajahan abadi untuk menemukan arah padanya.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <audio id="bgmAudio" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedY = -(Math.random() * 0.6 + 0.2);
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.opacity = Math.random() * 0.6 + 0.2;
+      }
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+        if (this.y < 0) this.reset();
+      }
+      draw() {
+        ctx.fillStyle = `rgba(255, 26, 64, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 50; i++) { particles.push(new Particle()); }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+  </script>
+
+  <script>
+    const audio = document.getElementById('bgmAudio');
+    let isPlaying = false;
+
+    function startPlayback() {
+      if (!isPlaying) {
+        audio.play().then(() => {
+          isPlaying = true;
+        }).catch(() => {});
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', startPlayback);
+
+    const triggers = ['click', 'mousemove', 'touchstart', 'scroll', 'keydown'];
+    const handleFirstInteraction = function() {
+      startPlayback();
+      triggers.forEach(evt => window.removeEventListener(evt, handleFirstInteraction));
+    };
+
+    triggers.forEach(evt => window.addEventListener(evt, handleFirstInteraction, { once: true }));
+  </script>
+</body>
+</html>
