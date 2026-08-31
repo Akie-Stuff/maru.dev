@@ -288,6 +288,59 @@
     .poem-box p:last-child {
       margin-bottom: 0;
     }
+
+    /* ALERT SECTION STYLING */
+.alert-box {
+  background: rgba(255, 26, 64, 0.08);
+  border: 1px solid #ff1a40;
+  border-left: 4px solid #ff1a40;
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-top: 25px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(255, 26, 64, 0.15);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.alert-icon {
+  font-family: 'Fira Code', monospace;
+  color: #ff1a40;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.alert-content {
+  flex: 1;
+}
+
+.alert-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.alert-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  color: #d1c4c6;
+  line-height: 1.5;
+}
+
+.alert-text code {
+  font-family: 'Fira Code', monospace;
+  background: rgba(255, 26, 64, 0.2);
+  color: #ff8095;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
   </style>
 </head>
 <body>
@@ -303,8 +356,7 @@
   <canvas id="particle-canvas"></canvas>
 
   <!-- MAIN CARD -->
-  <main class="profile-card">
-    
+  <main class="profile-card">    
     <header class="profile-header">
       <div class="avatar-wrapper">
         <img src="916224.jpg" alt="Avatar" class="avatar-img">
@@ -312,6 +364,17 @@
       <h1 class="profile-name">maru | まる</h1>
       <div class="profile-tag">Software Engineer • Polymath • Composer & Writer</div>
     </header>
+
+            <!-- ALERT SECTION -->
+    <div class="alert-box">
+      <div class="alert-icon">[!]</div>
+      <div class="alert-content">
+        <div class="alert-title">Interaction Protocol & Boundaries</div>
+        <div class="alert-text">
+          Gaya komunikasi saya cenderung analitis dan solutif. Saya menghargai diskusi yang rasional, konkrit, dan jujur daripada sekadar validasi emosi tanpa arah. Harap diperhatikan bahwa interaksi dengan saya memprioritaskan kejelasan logika daripada kenyamanan emosional. Jika Anda mencari validasi emosional tanpa substansi, saya mungkin bukan orang yang tepat untuk itu. Saya menghargai pertukaran ide yang mendalam dan konstruktif.
+        </div>
+      </div>
+    </div>
 
     <section>
       <h2 class="section-title">// About Me</h2>
@@ -374,7 +437,6 @@
         </p>
       </div>
     </section>
-
   </main>
 
   <!-- NATIVE AUDIO ELEMENT (CDN STREAMING READY) -->
