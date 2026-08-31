@@ -29,7 +29,7 @@
       position: relative;
     }
 
-    /* OVERLAY ENTER BUTTON (MEMAKSA INTERAKSI UNTUK AUTOPLAY AUDIO) */
+    /* OVERLAY ENTER BUTTON */
     #enter-overlay {
       position: fixed;
       top: 0;
@@ -112,7 +112,7 @@
       pointer-events: none;
     }
 
-    /* PROFILE CARD CONTAINER WITH ENTRANCE ANIMATION */
+    /* PROFILE CARD CONTAINER */
     .profile-card {
       width: 100%;
       max-width: 680px;
@@ -131,7 +131,7 @@
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    /* HEADER & AVATAR WITH GLOW ANIMATION */
+    /* HEADER & AVATAR */
     .profile-header {
       display: flex;
       flex-direction: column;
@@ -162,7 +162,6 @@
       100% { box-shadow: 0 0 25px rgba(255, 26, 64, 0.9), 0 0 45px rgba(255, 0, 50, 0.5); }
     }
 
-    /* GLITCH TEXT EFFECT FOR BRAND */
     .profile-name {
       font-family: 'Cinzel', serif;
       font-size: 2.4rem;
@@ -238,7 +237,7 @@
       line-height: 1.6;
     }
 
-    /* TALK TOPICS & TAGS */
+    /* TAGS */
     .tag-container {
       display: flex;
       flex-wrap: wrap;
@@ -266,81 +265,210 @@
       transform: translateY(-3px) scale(1.03);
     }
 
-    /* POEM SECTION STYLING */
-    .poem-box {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.15rem;
-      line-height: 1.8;
-      color: #e0b0b8;
+    /* ALERT SECTION STYLING (BAHASA INDONESIA) */
+    .alert-box {
+      background: rgba(255, 26, 64, 0.08);
+      border: 1px solid #ff1a40;
+      border-left: 4px solid #ff1a40;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-top: 25px;
+      position: relative;
+      box-shadow: 0 0 15px rgba(255, 26, 64, 0.15);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .alert-icon {
+      font-family: 'Fira Code', monospace;
+      color: #ff1a40;
+      font-size: 1.2rem;
+      font-weight: bold;
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    .alert-content {
+      flex: 1;
+    }
+
+    .alert-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .alert-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      color: #d1c4c6;
+      line-height: 1.5;
+    }
+
+    /* PROJECT & ACHIEVEMENT STYLES */
+  .project-list, .achievement-list, .community-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .community-card {
       background: rgba(20, 2, 8, 0.6);
       border: 1px solid rgba(255, 26, 64, 0.2);
-      border-radius: 10px;
-      padding: 24px 28px;
-      margin-top: 12px;
-      position: relative;
+      border-radius: 8px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
     }
 
-    .poem-box p {
-      margin-bottom: 14px;
+    .community-card:hover {
+      border-color: #ff1a40;
+      box-shadow: 0 0 15px rgba(255, 26, 64, 0.25);
+      transform: translateY(-2px);
+      background: rgba(255, 26, 64, 0.08);
     }
 
-    .poem-box p:last-child {
-      margin-bottom: 0;
+    .community-icon {
+      font-family: 'Fira Code', monospace;
+      color: #ff1a40;
+      font-size: 1rem;
+      font-weight: bold;
     }
 
-    /* ALERT SECTION STYLING */
-.alert-box {
-  background: rgba(255, 26, 64, 0.08);
-  border: 1px solid #ff1a40;
-  border-left: 4px solid #ff1a40;
-  border-radius: 8px;
-  padding: 18px 20px;
-  margin-top: 25px;
-  position: relative;
-  box-shadow: 0 0 15px rgba(255, 26, 64, 0.15);
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-}
+    .community-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 0.98rem;
+    }
 
-.alert-icon {
-  font-family: 'Fira Code', monospace;
-  color: #ff1a40;
-  font-size: 1.2rem;
-  font-weight: bold;
-  line-height: 1;
-  padding-top: 2px;
-}
+    .project-item {
+      background: rgba(20, 2, 8, 0.6);
+      border: 1px solid rgba(255, 26, 64, 0.2);
+      border-radius: 8px;
+      padding: 16px 20px;
+      transition: all 0.3s ease;
+    }
 
-.alert-content {
-  flex: 1;
-}
+    .project-item:hover {
+      border-color: #ff1a40;
+      box-shadow: 0 0 15px rgba(255, 26, 64, 0.2);
+      transform: translateX(4px);
+    }
 
-.alert-title {
-  font-family: 'Cinzel', serif;
-  font-size: 0.95rem;
-  color: #ffffff;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
-.alert-text {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.95rem;
-  color: #d1c4c6;
-  line-height: 1.5;
-}
+    .project-name {
+      font-family: 'Cinzel', serif;
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
 
-.alert-text code {
-  font-family: 'Fira Code', monospace;
-  background: rgba(255, 26, 64, 0.2);
-  color: #ff8095;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
+    .project-tech {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.78rem;
+      color: #ff8095;
+      background: rgba(255, 26, 64, 0.12);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 26, 64, 0.25);
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      color: #cccccc;
+      line-height: 1.5;
+    }
+
+    .achievement-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255, 26, 64, 0.04);
+      border-left: 3px solid #ff1a40;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      transition: all 0.3s ease;
+    }
+
+    .achievement-item:hover {
+      background: rgba(255, 26, 64, 0.08);
+      transform: translateX(4px);
+    }
+
+    .achievement-badge {
+      font-family: 'Fira Code', monospace;
+      color: #ff1a40;
+      font-size: 0.85rem;
+      font-weight: bold;
+      min-width: 100px;
+    }
+
+    .achievement-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    .achievement-sub {
+      font-size: 0.88rem;
+      color: #aaa;
+    }
+
+    /* FOOTER GITHUB LINK BUTTON */
+    .profile-footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 26, 64, 0.25);
+      display: flex;
+      justify-content: center;
+    }
+
+    .github-link {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      color: #ffffff;
+      text-decoration: none;
+      background: rgba(255, 26, 64, 0.1);
+      border: 1px solid #ff1a40;
+      padding: 12px 28px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 15px rgba(255, 0, 50, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .github-link:hover {
+      background: rgba(255, 26, 64, 0.3);
+      box-shadow: 0 0 30px rgba(255, 0, 50, 0.6);
+      transform: translateY(-2px);
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -362,16 +490,16 @@
         <img src="916224.jpg" alt="Avatar" class="avatar-img">
       </div>
       <h1 class="profile-name">maru | まる</h1>
-      <div class="profile-tag">Software Engineer • Polymath • Composer & Writer</div>
+      <div class="profile-tag"> HPC Researcher • Writer • Polymath • Engineer </div>
     </header>
 
-            <!-- ALERT SECTION -->
+    <!-- ALERT SECTION (DISEBUTKAN DALAM BAHASA INDONESIA) -->
     <div class="alert-box">
       <div class="alert-icon">[!]</div>
       <div class="alert-content">
         <div class="alert-title">Interaction Protocol & Boundaries</div>
         <div class="alert-text">
-          Gaya komunikasi saya cenderung analitis dan solutif. Saya menghargai diskusi yang rasional, konkrit, dan jujur daripada sekadar validasi emosi tanpa arah. Harap diperhatikan bahwa interaksi dengan saya memprioritaskan kejelasan logika daripada kenyamanan emosional. Jika Anda mencari validasi emosional tanpa substansi, saya mungkin bukan orang yang tepat untuk itu. Saya menghargai pertukaran ide yang mendalam dan konstruktif.
+          Gaya komunikasi saya cenderung analitis dan solutif. Saya menghargai diskusi yang rasional, konkrit, dan jujur daripada sekadar validasi emosi tanpa arah. Harap diperhatikan bahwa interaksi dengan saya memprioritaskan kejelasan logika daripada kenyamanan emosional. Jika Anda mencari validasi emosional tanpa substansi, saya mungkin bukan orang yang tepat untuk itu.
         </div>
       </div>
     </div>
@@ -379,67 +507,257 @@
     <section>
       <h2 class="section-title">// About Me</h2>
       <p class="bio-text">
-        I operate across the convergence of analytical logic, human cognition, and auditory creation. While I engineer software systems and structure complex software architectures, my mind continuously explores classical philosophy, psychological patterns, and the neural mechanics of perception.
+        I operate across the convergence of low-level kernel architectures, autonomous robotics software, and high-performance computing. As an active Open-Source Contributor to Linux Kernel subsystems and Student Researcher in FPGA & vDPA acceleration, I design deterministic embedded systems while exploring classical logic systems and cognitive science.
       </p>
       <p class="bio-text">
-        Beyond code and theory, I manifest thoughts into words and sound—writing essays, crafting lyrics, and composing instrumental pieces that capture emotional resonances traditional language often fails to articulate.
+        Beyond assembly instructions, kernel patches, and robotic kinematics, I manifest thoughts into words and sound—writing technical essays, crafting lyrics, and composing instrumental pieces that capture emotional resonances traditional language often fails to articulate.
       </p>
       <div class="bio-quote">
-        "I am not an otaku or bound by subculture obsession. I am simply feeding the vision of my childhood dream self—constructing a dark crimson sanctuary where intellectual rigor, musical composition, and aesthetic depth exist as one."
+        "I am not bound by subculture obsession. I am constructing a dark crimson sanctuary where low-level system rigor, robotic synchronization, and intellectual depth exist as one."
       </div>
     </section>
 
+    <!-- COMMUNITY & NETWORK AFFILIATIONS SECTION -->
+    <section>
+      <h2 class="section-title">// Part of & Network Affiliations</h2>
+      <div class="community-grid">
+        <div class="community-card">
+          <span class="community-icon">&gt;_</span>
+          <span class="community-name">Kolam Koding</span>
+        </div>
+        <div class="community-card">
+          <span class="community-icon">&gt;_</span>
+          <span class="community-name">Nusantara Code</span>
+        </div>
+        <div class="community-card">
+          <span class="community-icon">&gt;_</span>
+          <span class="community-name">GNU Weeb</span>
+        </div>
+        <div class="community-card">
+          <span class="community-icon">&gt;_</span>
+          <span class="community-name">Competitive Programming Indonesia</span>
+        </div>
+        <div class="community-card">
+          <span class="community-icon">&gt;_</span>
+          <span class="community-name">Google Developer Group (GDG) Surabaya</span>
+        </div>
+        <div class="community-card">
+          <span class="community-icon">&gt;_</span>
+          <span class="community-name">GDSC Universitas Indonesia</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH & CONTRIBUTIONS SECTION -->
+    <section>
+      <h2 class="section-title">// Research & Kernel Contributions</h2>
+      <div class="project-list">
+        
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">Intel HPC Student Researcher</span>
+            <span class="project-tech">FPGA • vDPA / vPAAU Acceleration</span>
+          </div>
+          <p class="project-desc">
+            Hardware acceleration research on High-Performance Computing (HPC) infrastructure leveraging FPGA logic synthesis and vDPA/vPAAU offloading architectures.
+          </p>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">Linux Kernel Contributor (io_uring)</span>
+            <span class="project-tech">C • Asynchronous I/O • System Calls</span>
+          </div>
+          <p class="project-desc">
+            Contributions to the Linux kernel asynchronous I/O subsystem (`io_uring`) focusing on high-throughput syscall optimization and execution efficiency.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SPECTRUM OF DISCOURSE SECTION -->
     <section>
       <h2 class="section-title">// Spectrum of Discourse</h2>
       <p class="bio-text" style="font-size: 0.98rem;">
         Always open for intellectual exchange, creative synergy, or deep analytical discussions across these domains:
       </p>
-<div class="tag-container">
+      <div class="tag-container">
+        <span class="tag">Linux Subsystems & io_uring Asynchronous I/O</span>
+        <span class="tag">FPGA Hardware Offloading & vDPA Acceleration</span>
+        <span class="tag">Autonomous Humanoid Kinematics & KRSBI Robotics</span>
+        <span class="tag">Bare-Metal x86/ARM Assembly & Kernel Development</span>
         <span class="tag">Advaita Vedanta & Non-Dualist Ontologies</span>
-        <span class="tag">Madhyamaka & Buddhist Sunyata Philosophy</span>
         <span class="tag">Classical & Post-Aristotelian Logic Systems</span>
-        <span class="tag">Epistemology & Epistemic Sincerity</span>
         <span class="tag">Cognitive Neuroscience & Psychological Mechanics</span>
         <span class="tag">Instrumental Composition & Sonic Storywriting</span>
-        <span class="tag">Ancient Aesthetics & Regional Traditional Mysticism</span>
         <span class="tag">Backend System Architecture & Data Query Efficiency</span>
-        <span class="tag">Mathematical Clustering & Algorithmic Pattern Analysis</span>
         <span class="tag">Custom Motorcycle Aesthetics & Mechanical Craftsmanship</span>
       </div>
     </section>
 
+    <!-- HIGHLIGHTED PROJECTS SECTION -->
     <section>
-      <h2 class="section-title">// Rekayasa Musim Semi</h2>
-      <div class="poem-box">
-        <p>
-          Di bawah selimut salju yang membeku dalam retorika,<br>
-          aku pernah terbangun di antara pecahan kompas yang padam.<br>
-          Di sana, musim semi bukanlah siklus alam yang pasti datang,<br>
-          melainkan sebuah hipotesis yang harus kususun kembali dari nol.
-        </p>
-        <p>
-          Aku terlahir ulang di belantara kilatan merah kirmizi,<br>
-          menanggalkan kulit dingin tempat ingatan lama membatu.<br>
-          Setiap napas baru adalah algoritma yang mencari kompresi cita,<br>
-          menelusuri labirin kesadaran demi menembus kabut tak bertepi.
-        </p>
-        <p>
-          Di balik kerumitan struktur dan dentang nada yang kurangkai,<br>
-          ada satu jejak abstrak yang tak pernah berhenti kucari:<br>
-          tujuan mutlak dari sosok puan yang membayang di ambang batas mimpi.<br>
-          Apakah ia adalah kebenaran yang tersembunyi di balik susunan logika,<br>
-          atau simfoni terakhir yang belum sempat kutuliskan?
-        </p>
-        <p>
-          Maka biarlah musim semi ini tetap merekah dalam merah yang pekat—<br>
-          sebab dalam tiap kelahiran kembali yang berulang,<br>
-          langkahku hanyalah penjelajahan abadi untuk menemukan arah padanya.
-        </p>
+      <h2 class="section-title">// Highlighted Projects</h2>
+      <div class="project-list">
+
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">Bare-Metal x86 Bootloader & Microkernel</span>
+            <span class="project-tech">x86 Assembly • C • Low-Level Systems</span>
+          </div>
+          <p class="project-desc">
+            Custom two-stage bootloader and real-time microkernel implementation written from scratch in Assembly and C with ISR handling and protected-mode switching.
+          </p>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">KRSBI Humanoid Motion Controller</span>
+            <span class="project-tech">C++ • ROS2 • Inverse Kinematics</span>
+          </div>
+          <p class="project-desc">
+            Real-time trajectory generation and inverse kinematics motor controller tailored for autonomous humanoid robots in KRSBI national competitions.
+          </p>
+        </div>
+        
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">Assistive Vision for the Visually Impaired</span>
+            <span class="project-tech">Computer Vision • Embedded AI</span>
+          </div>
+          <p class="project-desc">
+            Assistive wearable system for visually impaired users utilizing spatial audio feedback and real-time computer vision object detection.
+          </p>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">Courier Route Optimization (TSP Solver)</span>
+            <span class="project-tech">Algorithms • Graph Theory • C++</span>
+          </div>
+          <p class="project-desc">
+            High-performance Travelling Salesperson Problem (TSP) solver using metaheuristic algorithms for computational logistics route optimization.
+          </p>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">GraphQL vs REST API Fetching Benchmark</span>
+            <span class="project-tech">GraphQL • Go • PostgreSQL</span>
+          </div>
+          <p class="project-desc">
+            Comparative quantitative benchmark analysis investigating data fetching efficiency, network payload sizes, and response latency across API architectures.
+          </p>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">KMeans Spatial Data Clustering Engine</span>
+            <span class="project-tech">Python • Machine Learning</span>
+          </div>
+          <p class="project-desc">
+            Parallelized KMeans clustering engine optimized for multi-dimensional spatial data grouping and algorithmic pattern visualization.
+          </p>
+        </div>
+
       </div>
     </section>
+
+    <!-- ACHIEVEMENTS & COMPETITIONS SECTION -->
+    <section>
+      <h2 class="section-title">// Honors & Competitions</h2>
+      <div class="achievement-list">
+        
+        <div class="achievement-item">
+          <span class="achievement-badge">[KRSBI-BOLA]</span>
+          <div class="achievement-details">
+            <div class="achievement-title">Kontes Robot Pemin Bola Indonesia (KRSBI)</div>
+            <div class="achievement-sub">National Indonesian Robotics Contest — Autonomous Humanoid Choreography Division</div>
+          </div>
+        </div>
+
+        <div class="achievement-item">
+          <span class="achievement-badge">[KRPKI-PEMADAM]</span>
+          <div class="achievement-details">
+            <div class="achievement-title">Kontes Robot Pemadam Kebakaran Indonesia (KRPKI)</div>
+            <div class="achievement-sub">National Indonesian Robotics Contest — Autonomous Humanoid Choreography Division</div>
+          </div>
+        </div>
+
+        <div class="achievement-item">
+          <span class="achievement-badge">[ROBOTICS]</span>
+          <div class="achievement-details">
+            <div class="achievement-title">Regional Autonomous Robotics Competition</div>
+            <div class="achievement-sub">1st Place — Autonomous Navigation & Embedded Control Systems</div>
+          </div>
+        </div>
+
+        <div class="achievement-item">
+          <span class="achievement-badge">[AWS]</span>
+          <div class="achievement-details">
+            <div class="achievement-title">Amazon Web Services Cloud Architect Challenge</div>
+            <div class="achievement-sub">Best Implementation — Distributed Cloud Infrastructure & Scalable Systems</div>
+          </div>
+        </div>
+
+        <div class="achievement-item">
+          <span class="achievement-badge">[GEMASTIK]</span>
+          <div class="achievement-details">
+            <div class="achievement-title">GEMASTIK Scientific Paper & Essay Finalist</div>
+            <div class="achievement-sub">National ICT Student Competition — Advanced Systems & Applied AI Category</div>
+          </div>
+        </div>
+
+        <div class="achievement-item">
+          <span class="achievement-badge">[UBL-CP]</span>
+          <div class="achievement-details">
+            <div class="achievement-title">Indonesia UBL Competitive Programming Contest</div>
+            <div class="achievement-sub">Top Rank — Complex Algorithmic Logic & Dynamic Programming Execution</div>
+          </div>
+        </div>
+
+        <div class="achievement-item">
+          <span class="achievement-badge">[MOBILE-DEV]</span>
+          <div class="achievement-details">
+            <div class="achievement-title">Surabaya Mobile Developer Competition</div>
+            <div class="achievement-sub">Winner — Innovative High-Performance Mobile Applications</div>
+          </div>
+        </div>
+
+        <div class="achievement-item">
+          <span class="achievement-badge">[HACKATHON]</span>
+          <div class="achievement-details">
+            <div class="achievement-title">National Embedded Systems Hackathon</div>
+            <div class="achievement-sub">First Place — Rapid Prototyping & Low-Latency Hardware Integration</div>
+          </div>
+        </div>
+
+        <div class="achievement-item">
+          <span class="achievement-badge">[HARDWARE]</span>
+          <div class="achievement-details">
+            <div class="achievement-title">Regional Microcontroller & IoT Innovation Cup</div>
+            <div class="achievement-sub">Gold Medal — Custom Bare-Metal Firmware Design & Sensor Fusion</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER GITHUB LINK -->
+    <footer class="profile-footer">
+      <a href="https://github.com/maru-arch" target="_blank" rel="noopener noreferrer" class="github-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+          <path d="M9 18c-4.51 2-5-2-7-2"></path>
+        </svg>
+        <span>github.com/maru-arch</span>
+      </a>
+    </footer>
+
   </main>
 
-  <!-- NATIVE AUDIO ELEMENT (CDN STREAMING READY) -->
+  <!-- NATIVE AUDIO ELEMENT -->
   <audio id="bgmAudio" loop preload="auto">
     <source src="https://cdn.jsdelivr.net/gh/Akie-Stuff/maru@main/music.mp3" type="audio/mpeg">
     <source src="music.mp3" type="audio/mpeg">
@@ -500,7 +818,6 @@
     startBtn.addEventListener('click', function() {
       audio.volume = 0.8;
       audio.play().then(() => {
-        // Hilangkan overlay secara halus setelah audio terkonfirmasi berputar
         overlay.style.opacity = '0';
         setTimeout(() => {
           overlay.style.visibility = 'hidden';
